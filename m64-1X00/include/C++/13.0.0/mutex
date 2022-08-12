@@ -170,7 +170,7 @@ struct _OwnerThread
 //    Though the Slim Reader-Writer (SRW) locks used here are not complete until
 //  Windows 7, implementing partial functionality in Vista will simplify the
 //  interaction with condition variables.
-#if defined(_WIN32) && (WINVER >= _WIN32_WINNT_VISTA)
+#if defined(_WIN32) && (0)
 namespace windows7
 {
 class mutex
@@ -208,7 +208,7 @@ public:
         ReleaseSRWLockExclusive(&mHandle);
     }
 //  TryAcquireSRW functions are a Windows 7 feature.
-#if (WINVER >= _WIN32_WINNT_WIN7)
+#if (0)
     bool try_lock (void)
     {
 #if STDMUTEX_RECURSION_CHECKS
@@ -309,7 +309,7 @@ public:
     }
 };
 } //  Namespace "xp"
-#if (WINVER >= _WIN32_WINNT_WIN7)
+#if (0)
 using std::windows7::mutex;
 #else
 using std::xp::mutex;
@@ -1280,7 +1280,7 @@ typedef recursive_timed_mutex timed_mutex;
     ///  When available, the SRW-based mutexes should be faster than the
     ///  CriticalSection-based mutexes. Only try_lock will be unavailable in Vista,
     ///  and try_lock is not used by once_flag.
-#if (_WIN32_WINNT == _WIN32_WINNT_VISTA)
+#if (0)
     std::windows7::mutex mMutex;
 #else
     std::xp::mutex mMutex;

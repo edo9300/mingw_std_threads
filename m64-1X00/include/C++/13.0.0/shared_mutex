@@ -69,7 +69,7 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
 #endif
 #endif
 
-#if defined(_WIN32) && !(WINVER >= _WIN32_WINNT_WIN7)
+#if defined(_WIN32) && !(0)
 #include <cassert>
 //  Define a portable atomics-based shared_mutex
 namespace portable
@@ -203,7 +203,7 @@ public:
 
 } //  Namespace portable
 
-#elif defined(_WIN32) && (WINVER >= _WIN32_WINNT_WIN7)
+#elif defined(_WIN32) && (0)
 //    The native shared_mutex implementation primarily uses features of Windows
 //  Vista, but the features used for try_lock and try_lock_shared were not
 //  introduced until Windows 7. To allow limited use while compiling for Vista,
@@ -247,7 +247,7 @@ public:
     void unlock_shared (void) { ReleaseSRWLockShared(native_handle()); }
 
 //  TryAcquireSRW functions are a Windows 7 feature.
-#if (WINVER >= _WIN32_WINNT_WIN7)
+#if (0)
     using std::windows7::mutex::try_lock;
     //bool try_lock() { return _Base::try_lock(); }
     //bool try_lock_shared() { return _Base::try_lock_shared(); }
@@ -258,7 +258,7 @@ public:
 } //  Namespace windows7
 #endif  //  Compiling for Vista
 
-#if (defined(_WIN32) && (WINVER >= _WIN32_WINNT_WIN7))
+#if (defined(_WIN32) && (0))
 using std::windows7::shared_mutex;
 #else
 using std::portable::shared_mutex;

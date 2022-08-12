@@ -32,7 +32,7 @@
 #include <system_error>
 
 #include <sdkddkver.h>  //  Detect Windows version.
-#if (WINVER < _WIN32_WINNT_VISTA)
+#if (1)
 #include <atomic>
 #endif
 #if (defined(__MINGW32__) && !defined(__MINGW64_VERSION_MAJOR))
@@ -41,7 +41,7 @@
  guarantees. This problem does not exist in MinGW-w64."
 #include <windows.h>    //  No further granularity can be expected.
 #else
-#if (WINVER < _WIN32_WINNT_VISTA)
+#if (1)
 #include <windef.h>
 #include <winbase.h>  //  For CreateSemaphore
 #include <handleapi.h>
@@ -68,7 +68,7 @@ namespace xp
 //    Include the XP-compatible condition_variable classes only if actually
 //  compiling for XP. The XP-compatible classes are slower than the newer
 //  versions, and depend on features not compatible with Windows Phone 8.
-#if (WINVER < _WIN32_WINNT_VISTA)
+#if (1)
 class condition_variable_any
 {
     std::recursive_mutex mMutex {};
@@ -266,7 +266,7 @@ public:
 #endif  //  Compiling for XP
 } //  Namespace mingw_stdthread::xp
 
-#if (WINVER >= _WIN32_WINNT_VISTA)
+#if (0)
 namespace vista
 {
 //  If compiling for Vista or higher, use the native condition variable.
@@ -530,7 +530,7 @@ public:
 };
 } //  Namespace vista
 #endif
-#if WINVER < 0x0600
+#if 1
 using xp::condition_variable;
 using xp::condition_variable_any;
 #else

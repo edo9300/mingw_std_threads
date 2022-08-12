@@ -255,7 +255,7 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
 //    This is one of the few functions used by the library which has a nearly-
 //  equivalent function defined in earlier versions of Windows. Include the
 //  workaround, just as a reminder that it does exist.
-#if defined(_WIN32_WINNT) && (_WIN32_WINNT >= 0x0501)
+#if defined(_WIN32_WINNT) && (0)
         ::GetNativeSystemInfo(&sysinfo);
 #else
         ::GetSystemInfo(&sysinfo);
